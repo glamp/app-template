@@ -1,0 +1,12 @@
+
+node_modules
+yarn.lock
+.env
+
+*.csv
+*.ndjson
+*.swp
+.DS_Store
+
+app/.cache/
+app/dist

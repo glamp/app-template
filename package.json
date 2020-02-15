@@ -1,0 +1,50 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "start:cluster": "node server/cluster.js",
+    "start:dev": "concurrently \"npm run start:server\" \"npm run start:client\"",
+    "start:db": "concurrently \"./server/db/dev.sh\" \"./server/db/redis-dev.sh\"",
+    "start:server": "nodemon --ignore app/ server/index.js",
+    "start:client": "cd app && npm run start",
+    "build:client": "cd app && NODE_ENV=production npm run build:heroku",
+    "heroku-postbuild": "npm run build:client"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.6.2",
+    "axios": "^0.19.0",
+    "body-parser": "^1.18.3",
+    "compression": "^1.7.4",
+    "cookie-parser": "^1.4.4",
+    "csurf": "^1.10.0",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "express-rate-limit": "^5.0.0",
+    "express-sslify": "^1.2.0",
+    "helmet": "^3.21.1",
+    "hpp": "^0.2.2",
+    "ioredis": "^4.14.1",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.16.3",
+    "lodash": "^4.17.11",
+    "moment": "^2.24.0",
+    "morgan": "^1.9.1",
+    "passport": "^0.4.0",
+    "passport-google-oauth": "^2.0.0",
+    "pg": "^7.8.0",
+    "pg-query-stream": "^2.0.1",
+    "rate-limit-redis": "^1.6.0",
+    "shortid": "^2.2.15",
+    "useragent": "^2.3.0",
+    "uuid": "^3.3.3"
+  },
+  "devDependencies": {
+    "concurrently": "^4.1.0",
+    "nodemon": "^1.18.10"
+  }
+}
